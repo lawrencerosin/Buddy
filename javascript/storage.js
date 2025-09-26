@@ -7,13 +7,17 @@ async function GetAllImages(){
   const submenu=document.getElementById("submenu");
   
   //Removes from the previous menu
-  submenu.innerHTML="<img class='default-background background-image-option'>";
+  submenu.innerHTML="<img class='default-background background-image-option' id='default'>";
+  document.getElementById("default").addEventListener("click", function(){
+    document.body.style.backgroundImage="none";
+    submenu.innerHTML="";
+  })
   for(let record of data["records"]){
     const image=document.createElement("img");
     image.className="background-image-option";
     image.src=record["baseimageurl"];
     image.addEventListener("click", function(){
-       document.body.style.backgroundImage=`url(${PATH})`;
+       document.body.style.backgroundImage=`url(${image.src})`;
        submenu.innerHTML="";
     })
     submenu.appendChild(image);
