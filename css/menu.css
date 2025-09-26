@@ -1,14 +1,16 @@
-.background-image-option{
+.background-color-option{
     --size:100px;
     width:var(--size);
     height:var(--size);
     display:inline-block;
+    border: 1px solid black;
+
 }
 .default-background{
     background-color:lightblue;
     border:1px solid black;/*To separate from the general background*/
 }
-#menu-bar{
+.menu-bar{
      background-color:lightgray;
      width:20%;
      display:inline-block;
