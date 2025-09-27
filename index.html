@@ -6,13 +6,14 @@
     <title>Buddy</title>
     <link rel="stylesheet" type="text/css" href="css/menu.css">
      <link rel="stylesheet" type="text/css" href="css/code.css">
-     <script src="javascript/storage.js"></script>
+
+     <script type="module" src="javascript/storage.js"></script>
     <script type="module" src="javascript/commands.js"></script>
     <script type="module" src="javascript/code.js"></script>
 </head>
 <body style="background-color: lightblue;">
     <nav class="center menu-bar">
-      <span class="menu-item" onclick="ShowStorageOptions()">Storage</span>
+      <span class="menu-item" id="storage-options">Storage</span>
       <span id="background-image" onclick="GetAllImages()" class="menu-item">Background Color</span>
     </nav>
     <br>

@@ -1,22 +1,36 @@
+import {Save} from "./internal storage.js";
 const API_KEY="1f272713-85bb-4845-b7f9-da35855fd665";
-function ShowStorageOptions(){
+class Action{
+  constructor(text, action){
+    this.text=text;
+    this.action=action;
+ 
+  }
+  AddAction(element){
+    element.addEventListener("click", this.action);
+  }
+}
+document.getElementById("storage-options").addEventListener("click",
+  function(){
+
   const submenu=document.getElementById("submenu");
   if(submenu.children.length==0||submenu.firstChild.textContent.length==0){
-    const STORAGE_OPTIONS=["New", "Open", "Save"];
+    const save=function(){Save()};
+    const STORAGE_OPTIONS=[new Action("New", function(){}), new Action("Open", function(){}), new Action("Save", save)];
    
      submenu.innerHTML="";
     for(let storageOption of STORAGE_OPTIONS){
        const option=document.createElement("span");
-       option.textContent=storageOption;
+        option.textContent=storageOption.text;
        option.classList.add("menu-item");
-   
+       storageOption.AddAction(option);
       submenu.appendChild(option);
     }
   }
   else{
     submenu.innerHTML="";
   }
-}
+});
 function CreateColorSelection(path){
   const colorSelection=document.createElement("form");
   const name=document.createElement("input");
@@ -91,17 +105,3 @@ async function GetAllImages(){
     submenu.innerHTML="";
   }
 }
-class Program{
-   constructor(name, code){
-    this.name=name;
-    this.code=code;
-   }
-   Save(){
-    localStorage.setItem(this.name, this.code);
-   }
-   static Open(name){
-    const code=localStorage.getItem(name);
-    document.getElementById(name).innerHTML=code;
-    return new Program(name, code);
-   }
-} 

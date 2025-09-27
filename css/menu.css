@@ -11,11 +11,11 @@
     border:1px solid black;/*To separate from the general background*/
 }
 .menu-bar{
-     background-color:lightgray;
+     
      width:20%;
      display:inline-block;
 }
 .menu-item{
     border:2px solid white;
-    
+    background-color:aquamarine;
 }
