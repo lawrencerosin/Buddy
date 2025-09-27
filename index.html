@@ -13,15 +13,19 @@
 <body style="background-color: lightblue;">
     <nav class="center menu-bar">
       <span class="menu-item" onclick="ShowStorageOptions()">Storage</span>
-      <span id="backgroundImage" onclick="GetAllImages()" class="menu-item">Background Image</span>
+      <span id="background-image" onclick="GetAllImages()" class="menu-item">Background Color</span>
     </nav>
     <br>
     <nav id="submenu" class="center menu-bar"></nav>
-    <div>
-        <button type="button" id="addInstruction">Add Instruction</button>
+    <form>
+        <button type="button" id="add-instruction">Add Instruction</button>
+        <button type="button" style="background-color:yellow;" id="run">Run</button>
       <ol id="program">
         
       </ol>
+    </form>
+    <div id="output">
+
     </div>
 </body>
 </html>

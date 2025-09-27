@@ -1,15 +1,20 @@
 const API_KEY="1f272713-85bb-4845-b7f9-da35855fd665";
 function ShowStorageOptions(){
-  
-  const STORAGE_OPTIONS=["New", "Open", "Save"];
-   const submenu=document.getElementById("submenu");
-   submenu.innerHTML="";
-  for(let storageOption of STORAGE_OPTIONS){
-    const option=document.createElement("span");
-    option.textContent=storageOption;
-    option.classList.add("menu-item");
+  const submenu=document.getElementById("submenu");
+  if(submenu.children.length==0||submenu.firstChild.textContent.length==0){
+    const STORAGE_OPTIONS=["New", "Open", "Save"];
    
-    submenu.appendChild(option);
+     submenu.innerHTML="";
+    for(let storageOption of STORAGE_OPTIONS){
+       const option=document.createElement("span");
+       option.textContent=storageOption;
+       option.classList.add("menu-item");
+   
+      submenu.appendChild(option);
+    }
+  }
+  else{
+    submenu.innerHTML="";
   }
 }
 function CreateColorSelection(path){

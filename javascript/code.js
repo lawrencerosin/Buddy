@@ -1,9 +1,10 @@
-import {TAG_COMBOS} from "./commands.js";
+import {TAG_COMBOS, CreateLogInForm} from "./commands.js";
 function CreateTagComboMenu(){
     const combos=document.createElement("select");
     for(let combo of TAG_COMBOS){
         const comboOption=document.createElement("option");
         comboOption.textContent=combo;
+        comboOption.value=combo;
         combos.appendChild(comboOption);
     }
     return combos;
@@ -17,7 +18,7 @@ function CreateDeleteButton(){
     });
     return deleteButton;
 }
-document.getElementById("addInstruction").addEventListener("click", function(){
+document.getElementById("add-instruction").addEventListener("click", function(){
     const instruction=document.createElement("li");
    const tagCombos=CreateTagComboMenu();
    const text=document.createElement("textarea");
@@ -26,4 +27,18 @@ document.getElementById("addInstruction").addEventListener("click", function(){
    instruction.appendChild(text);
    instruction.appendChild(deleteButton);
    document.getElementById("program").appendChild(instruction);
+});
+document.getElementById("run").addEventListener("click",function(){
+    const output=document.getElementById("output");
+    const program=document.getElementById("program");
+    output.innerHTML="";
+    for(let instruction of program.children){
+        console.log(instruction.children[0].value);
+        switch(instruction.children[0].value){
+           case TAG_COMBOS[1]:
+             
+              output.appendChild(CreateLogInForm());
+              
+        }
+    }
 });

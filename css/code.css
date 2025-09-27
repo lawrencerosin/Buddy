@@ -10,9 +10,16 @@
 #program>li{
     background-color:pink;
     border-radius:2px;
+    border:1px solid limegreen;
+    padding-bottom:10px;
+    padding-top:10px;
+    padding-left:20px;
 }
 .center{
     margin-left:auto;
     margin-right:auto;
 
+}
+#add-instruction{
+    background-color:yellow;
 }
