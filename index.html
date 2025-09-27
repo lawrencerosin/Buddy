@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buddy</title>
     <link rel="stylesheet" type="text/css" href="css/menu.css">
+     <link rel="stylesheet" type="text/css" href="css/code.css">
      <script src="javascript/storage.js"></script>
     <script type="module" src="javascript/commands.js"></script>
     <script type="module" src="javascript/code.js"></script>
 </head>
 <body style="background-color: lightblue;">
-    <nav>
-      <span>Storage</span>
-      <span id="backgroundImage" onclick="GetAllImages()">Background Image</span>
+    <nav class="center menu-bar">
+      <span class="menu-item" onclick="ShowStorageOptions()">Storage</span>
+      <span id="backgroundImage" onclick="GetAllImages()" class="menu-item">Background Image</span>
     </nav>
-    <nav id="submenu"></nav>
+    <br>
+    <nav id="submenu" class="center menu-bar"></nav>
     <div>
         <button type="button" id="addInstruction">Add Instruction</button>
       <ol id="program">

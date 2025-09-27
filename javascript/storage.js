@@ -1,26 +1,102 @@
 const API_KEY="1f272713-85bb-4845-b7f9-da35855fd665";
-
-async function GetAllImages(){
-  const PATH="https://api.harvardartmuseums.org/image?apikey="+API_KEY
-  const imagesURL=await fetch(PATH);
-  const data=await imagesURL.json();
-  const submenu=document.getElementById("submenu");
+function ShowStorageOptions(){
   
-  //Removes from the previous menu
-  submenu.innerHTML="<img class='default-background background-image-option' id='default'>";
-  document.getElementById("default").addEventListener("click", function(){
-    document.body.style.backgroundImage="none";
-    submenu.innerHTML="";
-  })
-  for(let record of data["records"]){
-    const image=document.createElement("img");
-    image.className="background-image-option";
-    image.src=record["baseimageurl"];
-    image.addEventListener("click", function(){
-       document.body.style.backgroundImage=`url(${image.src})`;
-       submenu.innerHTML="";
-    })
-    submenu.appendChild(image);
+  const STORAGE_OPTIONS=["New", "Open", "Save"];
+   const submenu=document.getElementById("submenu");
+   submenu.innerHTML="";
+  for(let storageOption of STORAGE_OPTIONS){
+    const option=document.createElement("span");
+    option.textContent=storageOption;
+    option.classList.add("menu-item");
+   
+    submenu.appendChild(option);
   }
 }
- 
+function CreateColorSelection(path){
+  const colorSelection=document.createElement("form");
+  const name=document.createElement("input");
+  name.setAttribute("placeholder", "Color Name");
+  name.setAttribute("required", true);
+  const colors=document.createElement("input");
+  colors.setAttribute("type", "color");
+  colors.setAttribute("required", true);
+  const submit=document.createElement("button");
+  submit.textContent="Submit";
+  submit.addEventListener("click", function(event){
+      event.preventDefault();
+      const colorAdd=new XMLHttpRequest();
+      colorAdd.open("POST", path, true);
+      colorAdd.setRequestHeader("Content-Type", "application/json");
+      const colorInfo={"name":name.value, "color":colors.value};
+      colorAdd.onreadystatechange=function(){
+        if(colorAdd.readyState==4){
+          if(colorAdd.status==200||colorAdd.statu==201)
+             alert("Color successfully sent");
+          else
+            alert("Unable to send color");
+        }
+      }
+      colorAdd.send(JSON.stringify(colorInfo));
+  });
+  colorSelection.appendChild(name);
+  colorSelection.appendChild(colors);
+  colorSelection.appendChild(submit);
+  return colorSelection;
+}
+async function GetAllImages(){
+  function WithoutSpaces(color){
+    let spaceless="";
+    for(let position=0; position<color.length; position++){
+      if(color[position]!=' ')
+        spaceless+=color[position];
+    }
+    return spaceless;
+  }
+  const submenu=document.getElementById("submenu");
+  //If the background menu isn't already opened
+  if(submenu.children.length==0||submenu.firstChild.textContent.length>0){
+     submenu.innerHTML="";
+     const PATH="https://api.restful-api.dev/objects";
+     const imagesURL=await fetch(PATH);
+    const infos=await imagesURL.json();
+    //To return to the default color
+    infos.unshift({"data":{"color":"lightblue"}});
+  
+    for(let info of infos){
+      const colorSquare=document.createElement("span");
+     
+      if(info["data"]!==null&&"data" in info&&"color" in info["data"]){
+      
+       colorSquare.style.backgroundColor=WithoutSpaces(info["data"]["color"].toLowerCase());
+        colorSquare.className="background-color-option";
+        colorSquare.addEventListener("click", function(){
+            document.body.style.backgroundColor=colorSquare.style.backgroundColor;
+            //Closes the menu
+            submenu.innerHTML="";
+      });
+       submenu.appendChild(colorSquare);
+      }
+    
+   }
+
+    submenu.appendChild(CreateColorSelection(PATH));
+    submenu.children[0].style.borderColor="black";
+  }
+  else{
+    submenu.innerHTML="";
+  }
+}
+class Program{
+   constructor(name, code){
+    this.name=name;
+    this.code=code;
+   }
+   Save(){
+    localStorage.setItem(this.name, this.code);
+   }
+   static Open(name){
+    const code=localStorage.getItem(name);
+    document.getElementById(name).innerHTML=code;
+    return new Program(name, code);
+   }
+} 

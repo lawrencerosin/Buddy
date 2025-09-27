@@ -11,10 +11,14 @@ function CreateTagComboMenu(){
 function CreateDeleteButton(){
     const deleteButton=document.createElement("button");
     deleteButton.textContent="Delete Button";
+    deleteButton.style.backgroundColor="red";
+    deleteButton.addEventListener("click", function(){
+         deleteButton.parentElement.parentElement.removeChild(deleteButton.parentElement);
+    });
     return deleteButton;
 }
 document.getElementById("addInstruction").addEventListener("click", function(){
-    const instruction=document.createElement("div");
+    const instruction=document.createElement("li");
    const tagCombos=CreateTagComboMenu();
    const text=document.createElement("textarea");
    const deleteButton=CreateDeleteButton();
