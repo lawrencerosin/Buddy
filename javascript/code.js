@@ -1,7 +1,7 @@
-import {TAG_COMBOS, CreateLogInForm} from "./commands.js";
+import * as commands from "./commands.js";
 function CreateTagComboMenu(){
     const combos=document.createElement("select");
-    for(let combo of TAG_COMBOS){
+    for(let combo of commands.TAG_COMBOS){
         const comboOption=document.createElement("option");
         comboOption.textContent=combo;
         comboOption.value=combo;
@@ -33,11 +33,15 @@ document.getElementById("run").addEventListener("click",function(){
     const program=document.getElementById("program");
     output.innerHTML="";
     for(let instruction of program.children){
-        console.log(instruction.children[0].value);
+       
         switch(instruction.children[0].value){
-           case TAG_COMBOS[1]:
+           case commands.TAG_COMBOS[0]:
+             output.appendChild(commands.CreateSignUpForm());
+             break;
+           case commands.TAG_COMBOS[1]:
              
-              output.appendChild(CreateLogInForm());
+              output.appendChild(commands.CreateLogInForm());
+              break;
               
         }
     }

@@ -17,3 +17,24 @@ export function CreateLogInForm(){
    form.appendChild(logIn);
    return form;
 }
+export function CreateSignUpForm(){
+    const form=document.createElement("form");
+    form.appendChild(CreateInputBox("First Name"));
+    form.innerHTML+="<br>";
+    form.appendChild(CreateInputBox("Last Name"));
+    form.innerHTML+="<br>";
+    form.appendChild(CreateInputBox("E-mail Address", "email"));
+    form.innerHTML+="<br>";
+    form.appendChild(CreateInputBox("Password", "password"));
+    form.innerHTML+="<br>";
+    form.appendChild(CreateInputBox("Confirm Password", "password"));
+    form.innerHTML+="<br>";
+    const createAccount=document.createElement("button");
+    createAccount.textContent="Create Account";
+    form.appendChild(createAccount);
+    return form;
+
+}
+export function Hello(){
+    
+}
