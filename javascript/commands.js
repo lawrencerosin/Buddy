@@ -36,10 +36,15 @@ export function CreateSignUpForm(){
     return form;
 
 }
-export function CreateUnorderedList(instruction){
+export function CreateBulletedList(instruction){
      
     let list=document.createElement("ul");
     
     list.innerHTML=fill.FillList(instruction.children[1].value);
+    return list;
+}
+export function CreateUnbulletedList(instruction){
+    const list=CreateBulletedList(instruction);
+    list.style.listStyleType="none";
     return list;
 }
