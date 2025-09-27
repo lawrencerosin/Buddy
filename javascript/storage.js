@@ -1,4 +1,4 @@
-import {Save} from "./internal storage.js";
+import {Save, Open, NewProgram} from "./internal storage.js";
 const API_KEY="1f272713-85bb-4845-b7f9-da35855fd665";
 class Action{
   constructor(text, action){
@@ -15,8 +15,11 @@ document.getElementById("storage-options").addEventListener("click",
 
   const submenu=document.getElementById("submenu");
   if(submenu.children.length==0||submenu.firstChild.textContent.length==0){
+    const newProgram=function(){NewProgram()};
+    const open=function(){Open();};
     const save=function(){Save()};
-    const STORAGE_OPTIONS=[new Action("New", function(){}), new Action("Open", function(){}), new Action("Save", save)];
+
+    const STORAGE_OPTIONS=[new Action("New", newProgram), new Action("Open", open), new Action("Save", save)];
    
      submenu.innerHTML="";
     for(let storageOption of STORAGE_OPTIONS){
