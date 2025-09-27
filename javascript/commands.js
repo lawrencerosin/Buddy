@@ -1,3 +1,4 @@
+import * as fill from "./fill.js";
 export const TAG_COMBOS=["Sign Up Form", "Log In Form", "Numbered List", "Dotted List", "Undotted List"];
 function CreateInputBox(description, type="text"){
     const box=document.createElement("input");
@@ -35,6 +36,10 @@ export function CreateSignUpForm(){
     return form;
 
 }
-export function Hello(){
+export function CreateUnorderedList(instruction){
+     
+    let list=document.createElement("ul");
     
+    list.innerHTML=fill.FillList(instruction.children[1].value);
+    return list;
 }

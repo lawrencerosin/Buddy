@@ -42,7 +42,9 @@ document.getElementById("run").addEventListener("click",function(){
              
               output.appendChild(commands.CreateLogInForm());
               break;
-              
+           case commands.TAG_COMBOS[3]:
+             output.appendChild(commands.CreateUnorderedList(instruction));
+             break;
         }
     }
 });
