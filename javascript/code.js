@@ -1,4 +1,5 @@
 import * as commands from "./commands.js";
+import { Instruction } from "./pseudoclass.js";
 function CreateTagComboMenu(){
     const combos=document.createElement("select");
     for(let combo of commands.TAG_COMBOS){
@@ -24,8 +25,13 @@ document.getElementById("add-instruction").addEventListener("click", function(){
    const text=document.createElement("textarea");
    const deleteButton=CreateDeleteButton();
    instruction.appendChild(tagCombos);
+   
    instruction.appendChild(text);
    instruction.appendChild(deleteButton);
+   instruction.children[0].addEventListener("change", function(){
+      const instructionControl=new Instruction(instruction);
+      instructionControl.HoldTextOrNot();
+   });
    document.getElementById("program").appendChild(instruction);
 });
 document.getElementById("run").addEventListener("click",function(){
