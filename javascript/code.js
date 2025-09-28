@@ -42,12 +42,15 @@ document.getElementById("run").addEventListener("click",function(){
              
               output.appendChild(commands.CreateLogInForm());
               break;
-
+           case commands.TAG_COMBOS[2]:
+              output.appendChild(commands.CreateNumberedList(instruction));
+              break;
            case commands.TAG_COMBOS[3]:
-             output.appendChild(commands.CreateBulletedList(instruction));
+             output.appendChild(commands.CreateUnorderedList(instruction));
              break;
           case commands.TAG_COMBOS[4]:
-             output.appendChild(commands.CreateUnbulletedList(instruction));
+             output.appendChild(commands.CreateUnorderedListWithoutBullets(instruction));
+             break;
         }
     }
 });
