@@ -108,3 +108,4 @@ async function GetAllImages(){
     submenu.innerHTML="";
   }
 }
+document.getElementById("background-image").addEventListener("click", GetAllImages);

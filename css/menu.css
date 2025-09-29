@@ -2,7 +2,7 @@
     --size:100px;
     width:var(--size);
     height:var(--size);
-    display:inline-block;
+    display:block;
     border: 1px solid black;
 
 }
@@ -12,9 +12,9 @@
 }
 .menu-bar{
      
-     width:20%;
+     width:100%;
      display:inline-block;
-}
+} 
 .menu-item{
     border:2px solid white;
     background-color:aquamarine;
