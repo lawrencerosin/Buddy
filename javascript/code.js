@@ -73,6 +73,9 @@ document.getElementById("run").addEventListener("click",function(){
           case commands.TAG_COMBOS[5]:
             output.appendChild(commands.CreateBasicTable(instruction));
             break;
+          case commands.TAG_COMBOS[6]:
+            output.appendChild(commands.CreateTableWithHeaders(instruction));
+            break;
         }
     }
 });
