@@ -1,5 +1,17 @@
 import * as commands from "./commands.js";
 import { Instruction } from "./pseudoclass.js";
+function HoldTextOrNot(menu){
+        if(menu.value=="Sign Up Form"||menu.value=="Log In Form"){
+          //  this.pseudo.states.add(this.#PSEUDO_NAME);//Is supposed to be a custom pseudoclass
+            menu.nextElementSibling.disabled=true;
+        }
+        else{
+            
+            
+          menu.nextElementSibling.disabled=false;
+        }
+    }
+
 function CreateTagComboMenu(){
     const combos=document.createElement("select");
     for(let combo of commands.TAG_COMBOS){
@@ -25,12 +37,11 @@ document.getElementById("add-instruction").addEventListener("click", function(){
    const text=document.createElement("textarea");
    const deleteButton=CreateDeleteButton();
    instruction.appendChild(tagCombos);
-   
+   text.disabled=true;
    instruction.appendChild(text);
    instruction.appendChild(deleteButton);
    instruction.children[0].addEventListener("change", function(){
-      const instructionControl=new Instruction(instruction);
-      instructionControl.HoldTextOrNot();
+     HoldTextOrNot(tagCombos);
    });
    document.getElementById("program").appendChild(instruction);
 });
@@ -57,6 +68,9 @@ document.getElementById("run").addEventListener("click",function(){
           case commands.TAG_COMBOS[4]:
              output.appendChild(commands.CreateUnorderedListWithoutBullets(instruction));
              break;
+          case commands.TAG_COMBOS[5]:
+            output.appendChild(commands.CreateBasicTable(instruction));
+            break;
         }
     }
 });

@@ -1,5 +1,5 @@
-import * as fill from "./fill.js";
-export const TAG_COMBOS=["Sign Up Form", "Log In Form", "Numbered List", "Dotted List", "Undotted List"];
+import {FillBasicTable, FillList} from "./fill.js";
+export const TAG_COMBOS=["Sign Up Form", "Log In Form", "Numbered List", "Dotted List", "Undotted List", "Basic Table"];
 function CreateInputBox(description, type="text"){
     const box=document.createElement("input");
     box.setAttribute("type", type);
@@ -50,6 +50,12 @@ export function CreateUnorderedListWithoutBullets(instruction){
 }
 export function CreateNumberedList(instruction){
     const list=document.createElement("ol");
-    list.innerHTML=fill.FillList(instruction.children[1].value);
+    list.innerHTML=FillList(instruction.children[1].value);
     return list;
+}
+export function CreateBasicTable(instruction){
+    const table=document.createElement("table");
+  //  table.style.border="1px solid black";
+    table.innerHTML=FillBasicTable(instruction.children[1].value);
+    return table;
 }
