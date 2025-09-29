@@ -1,5 +1,5 @@
 import {FillTable, FillList, FillHeaders, FillTitle} from "./fill.js";
-export const TAG_COMBOS=["Sign Up Form", "Log In Form", "Numbered List", "Dotted List", "Undotted List", "Basic Table", "Table With Headers", "Titled Table"];
+export const TAG_COMBOS=["Sign Up Form", "Log In Form", "Numbered List", "Dotted List", "Undotted List", "Basic Table", "Table With Headers", "Titled Table", "Titled Table With Headers"];
 function CreateInputBox(description, type="text"){
     const box=document.createElement("input");
     box.setAttribute("type", type);
@@ -68,5 +68,10 @@ export function CreateTableWithHeaders(instruction){
 export function CreateTitledTable(instruction){
     const table=document.createElement("table");
     table.innerHTML=FillTitle(instruction.children[1].value)+FillTable(instruction.children[1].value, 1);
+    return table;
+}
+export function CreateTitledTableWithHeaders(instruction){
+    const table=document.createElement("table");
+    table.innerHTML=FillTitle(instruction.children[1].value)+FillHeaders(instruction.children[1].value, 1)+FillTable(instruction.children[1].value, 2);
     return table;
 }
