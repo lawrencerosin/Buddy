@@ -1,5 +1,5 @@
 import * as commands from "./commands.js";
-import { Instruction } from "./pseudoclass.js";
+import { EditabiltyBox } from "./pseudoclass.js";
 function HoldTextOrNot(menu){
         if(menu.value=="Sign Up Form"||menu.value=="Log In Form"){
           //  this.pseudo.states.add(this.#PSEUDO_NAME);//Is supposed to be a custom pseudoclass
@@ -34,11 +34,13 @@ function CreateDeleteButton(){
 document.getElementById("add-instruction").addEventListener("click", function(){
     const instruction=document.createElement("li");
    const tagCombos=CreateTagComboMenu();
-   const text=document.createElement("textarea");
+   
+   const text=document.createElement("textarea"); 
    const deleteButton=CreateDeleteButton();
    instruction.appendChild(tagCombos);
    text.disabled=true;
    instruction.appendChild(text);
+   
    instruction.appendChild(deleteButton);
    instruction.children[0].addEventListener("change", function(){
      HoldTextOrNot(tagCombos);

@@ -55,7 +55,8 @@ export function CreateNumberedList(instruction){
 }
 export function CreateBasicTable(instruction){
     const table=document.createElement("table");
-  //  table.style.border="1px solid black";
+     
+     table.style.border="1px solid black";
     table.innerHTML=FillBasicTable(instruction.children[1].value);
     return table;
 }

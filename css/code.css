@@ -15,9 +15,9 @@
     padding-top:10px;
     padding-left:20px;
 }
-#program>li:state(editable){
+editability-box:uneditable{
     text-decoration: line-through;
-    background-color:gray;
+    background-color:black;
 }
 .center{
     margin-left:auto;

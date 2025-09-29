@@ -22,20 +22,21 @@ export function FillBasicTable(content, startRow=0){
   if(content.length>0){
     let position;
     let rowNum=0;
-    /*for(position=0; position<content.length&&rowNum<startRow; position++)
+    const CELL_STYLE=` style="border:1px solid black"`;
+    for(position=0; position<content.length&&rowNum<startRow; position++)
          if(content[position]=='\n')
-            rowNum++;*/
+            rowNum++;
     
-    table="<tr>";
+    table=`<tr><td ${CELL_STYLE}>`;
     for(; position<content.length; position++){
         switch(content[position]){
             case '\n':
-                table+="</td></tr>";
+                table+=`</td></tr><td ${CELL_STYLE}>`;
                 if(position<content.length-1)
                     table+"<tr>";
                 break;
             case ',':
-                table+="</td><td>";
+                table+=`</td><td ${CELL_STYLE}>`;
                 break;
             default:
                 table+=content[position];
