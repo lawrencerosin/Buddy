@@ -44,7 +44,7 @@ function CreateColorSelection(path){
   colors.setAttribute("required", true);
   const submit=document.createElement("button");
   submit.textContent="Submit";
-  submit.id="color-submit";
+  submit.className="color-submit";
   submit.addEventListener("click", function(event){
       event.preventDefault();
       const colorAdd=new XMLHttpRequest();
@@ -62,6 +62,7 @@ function CreateColorSelection(path){
         }
       }
       colorAdd.send(JSON.stringify(colorInfo));
+      submenu.innerHTML="";
   });
   colorSelection.appendChild(name);
   colorSelection.appendChild(colors);
