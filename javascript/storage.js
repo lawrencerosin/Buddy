@@ -44,15 +44,18 @@ function CreateColorSelection(path){
   colors.setAttribute("required", true);
   const submit=document.createElement("button");
   submit.textContent="Submit";
+  submit.id="color-submit";
   submit.addEventListener("click", function(event){
       event.preventDefault();
       const colorAdd=new XMLHttpRequest();
       colorAdd.open("POST", path, true);
       colorAdd.setRequestHeader("Content-Type", "application/json");
       const colorInfo={"name":name.value, "color":colors.value};
+      
       colorAdd.onreadystatechange=function(){
         if(colorAdd.readyState==4){
-          if(colorAdd.status==200||colorAdd.statu==201)
+           
+          if(colorAdd.status==200||colorAdd.status==201)
              alert("Color successfully sent");
           else
             alert("Unable to send color");
