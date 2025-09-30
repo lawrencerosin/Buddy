@@ -19,11 +19,7 @@ editability-box:uneditable{
     text-decoration: line-through;
     background-color:black;
 }
-.center{
-    margin-left:auto;
-    margin-right:auto;
 
-}
 #add-instruction{
     background-color:yellow;
 }
