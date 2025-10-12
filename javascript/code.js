@@ -34,8 +34,10 @@ function CreateDeleteButton(){
 document.getElementById("add-instruction").addEventListener("click", function(){
     const instruction=document.createElement("li");
    const tagCombos=CreateTagComboMenu();
-   
+   const textHolder=document.createElement("editable-box");
+
    const text=document.createElement("textarea"); 
+   instruction.appendChild(textHolder);
    const deleteButton=CreateDeleteButton();
    instruction.appendChild(tagCombos);
    text.disabled=true;

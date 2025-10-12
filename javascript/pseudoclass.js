@@ -2,15 +2,15 @@
     #PSEUDO_NAME="uneditable";
      constructor(menu){
         super();
-        this.pseudo=this.attachInternals();
+        this.internals=this.attachInternals();
         setInterval(function(){
-            
-          if(menu.value=="Sign Up Form"||menu.value=="Log In Form")
-             this.pseudo.states.add(this.#PSEUDO_NAME);
+              
+          if(this.previousElementSibling.value=="Sign Up Form"||this.previousElementSibling.value=="Log In Form")
+             this.internals.states.add(this.#PSEUDO_NAME);
           else
-            this.pseudo.states.delete(this.#PSEUDO_NAME);
-       }, 1000);
+            this.internals.states.delete(this.#PSEUDO_NAME);
+         }, 1000);
      }
 
  }
-  
+customElements.define("editable-box", EditabiltyBox);
