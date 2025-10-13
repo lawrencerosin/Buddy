@@ -1,16 +1,5 @@
-import * as commands from "./commands.js";
-import { EditabiltyBox } from "./pseudoclass.js";
-function HoldTextOrNot(menu){
-        if(menu.value=="Sign Up Form"||menu.value=="Log In Form"){
-          //  this.pseudo.states.add(this.#PSEUDO_NAME);//Is supposed to be a custom pseudoclass
-            menu.nextElementSibling.disabled=true;
-        }
-        else{
-            
-            
-          menu.nextElementSibling.disabled=false;
-        }
-    }
+const code=`<script>
+
 
 function CreateTagComboMenu(){
     const combos=document.createElement("select");
@@ -85,4 +74,6 @@ document.getElementById("run").addEventListener("click",function(){
             output.appendChild(commands.CreateTitledTableWithHeaders(instruction));
         }
     }
-});
+        console.log("hello");
+});</script>`;
+module.exports={code};

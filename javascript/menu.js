@@ -10,7 +10,7 @@ class Action{
     element.addEventListener("click", this.action);
   }
 }
-document.getElementById("storage-options").addEventListener("click",
+document.getElementById("file-options").addEventListener("click",
   function(){
 
   const submenu=document.getElementById("submenu");
@@ -19,14 +19,14 @@ document.getElementById("storage-options").addEventListener("click",
     const open=function(){Open();};
     const save=function(){Save()};
 
-    const STORAGE_OPTIONS=[new Action("New", newProgram), new Action("Open", open), new Action("Save", save)];
+    const FILE_OPTIONS=[new Action("New", newProgram), new Action("Open", open), new Action("Save", save)];
    
      submenu.innerHTML="";
-    for(let storageOption of STORAGE_OPTIONS){
+    for(let fileOption of FILE_OPTIONS){
        const option=document.createElement("span");
-        option.textContent=storageOption.text;
+        option.textContent=fileOption.text;
        option.classList.add("menu-item");
-       storageOption.AddAction(option);
+       fileOption.AddAction(option);
       submenu.appendChild(option);
     }
   }
