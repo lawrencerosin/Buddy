@@ -10,7 +10,7 @@ class Action{
     element.addEventListener("click", this.action);
   }
 }
-document.getElementById("file-options").addEventListener("click",
+document.getElementById("files").addEventListener("click",
   function(){
 
   const submenu=document.getElementById("submenu");
