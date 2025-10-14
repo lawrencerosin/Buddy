@@ -1,4 +1,3 @@
-const code=`<script>
 
 
 function CreateTagComboMenu(){
@@ -74,6 +73,6 @@ document.getElementById("run").addEventListener("click",function(){
             output.appendChild(commands.CreateTitledTableWithHeaders(instruction));
         }
     }
-        console.log("hello");
-});</script>`;
-module.exports={code};
+         
+});
+ 
