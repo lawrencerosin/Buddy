@@ -1,4 +1,4 @@
-import {Save, Open, NewProgram} from "./files.js";
+import {Save, Open, NewProgram} from "./internal storage.js";
 const API_KEY="1f272713-85bb-4845-b7f9-da35855fd665";
 class Action{
   constructor(text, action){
@@ -10,7 +10,7 @@ class Action{
     element.addEventListener("click", this.action);
   }
 }
-document.getElementById("files").addEventListener("click",
+document.getElementById("storage").addEventListener("click",
   function(){
 
   const submenu=document.getElementById("submenu");
@@ -19,14 +19,14 @@ document.getElementById("files").addEventListener("click",
     const open=function(){Open();};
     const save=function(){Save()};
 
-    const FILE_OPTIONS=[new Action("New", newProgram), new Action("Open", open), new Action("Save", save)];
+    const STORAGE_OPTIONS=[new Action("New", newProgram), new Action("Open", open), new Action("Save", save)];
    
      submenu.innerHTML="";
-    for(let fileOption of FILE_OPTIONS){
+    for(let storageOption of STORAGE_OPTIONS){
        const option=document.createElement("span");
-        option.textContent=fileOption.text;
+        option.textContent=storageOption.text;
        option.classList.add("menu-item");
-       fileOption.AddAction(option);
+       storageOption.AddAction(option);
       submenu.appendChild(option);
     }
   }
