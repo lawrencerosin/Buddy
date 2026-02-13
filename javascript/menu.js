@@ -85,9 +85,7 @@ async function GetAllImages(){
      const PATH="https://api.restful-api.dev/objects";
      const imagesURL=await fetch(PATH);
     const infos=await imagesURL.json();
-    //To return to the default color
-    infos.unshift({"data":{"color":"lightblue"}});
-  
+    
     for(let info of infos){
       const colorSquare=document.createElement("span");
      
