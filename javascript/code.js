@@ -8,31 +8,33 @@ function CreateTagComboMenu(){
         combos.appendChild(comboOption);
     }
     combos.addEventListener("change", function(){
-       if(combos.selectedIndex<2){
-        const textbox=combos.nextElementSibling;
-        textbox.disabled=true;
-        textbox.value="";//Removes previously inserted text
-       }
-      else
-        combos.nextElementSibling.disabled=false;
+        if(combos.selectedIndex<2){
+          const textbox=combos.nextElementSibling;
+          textbox.disabled=true;
+          textbox.value="";
+        }
+        else{
+          combos.nextElementSibling.disabled=false;
+        }
     });
     return combos;
 }
 function CreateDeleteButton(){
     const deleteButton=document.createElement("button");
-    deleteButton.textContent="Delete Button";
+    deleteButton.textContent="Delete Control";
     deleteButton.style.backgroundColor="red";
     deleteButton.addEventListener("click", function(){
          deleteButton.parentElement.parentElement.removeChild(deleteButton.parentElement);
     });
     return deleteButton;
 }
-function CreateColorBox(type){
+function CreateColorBox(type, color){
   const boxHolder=document.createElement("span");
   boxHolder.textContent=type+" Color:";
     const box=document.createElement("input");
     
     box.setAttribute("type", "color");
+    box.value=color;
     boxHolder.appendChild(box);
     return boxHolder;
 } 
@@ -40,20 +42,17 @@ document.getElementById("add-instruction").addEventListener("click", function(){
     const instruction=document.createElement("li");
     instruction.style.listStyleType="none";
    const tagCombos=CreateTagComboMenu();
-   const textHolder=document.createElement("editable-box");
-
+    
    const text=document.createElement("textarea"); 
-   instruction.appendChild(textHolder);
+    
    const deleteButton=CreateDeleteButton();
    instruction.appendChild(tagCombos);
-   text.disabled=true;
+  
    instruction.appendChild(text);
-   instruction.appendChild(CreateColorBox("Text"));
-   instruction.appendChild(CreateColorBox("Background"));
+  instruction.appendChild(CreateColorBox("Text", "black"));
+   instruction.appendChild(CreateColorBox("Background", "white"));
    instruction.appendChild(deleteButton);
-   instruction.children[0].addEventListener("change", function(){
-     HoldTextOrNot(tagCombos);
-   });
+    
    document.getElementById("program").appendChild(instruction);
 }); 
 function AssignColors(instruction, element){
@@ -68,13 +67,16 @@ document.getElementById("run").addEventListener("click",function(){
     output.innerHTML="";
     for(let instruction of program.children){
         let component;
+        
         switch(instruction.children[0].value){
            case commands.TAG_COMBOS[0]:
-             component=commands.CreateSignUpForm();
+            
+            
+            component=commands.CreateSignUpForm();
              break;
            case commands.TAG_COMBOS[1]:
              
-              component=commands.CreateLogInForm();
+              component=commands.CreateLogInForm(instruction);
               break;
            case commands.TAG_COMBOS[2]:
 

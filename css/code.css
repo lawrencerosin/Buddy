@@ -2,7 +2,7 @@
     --vertical-space:10px;
     background-color:white;
     overflow-y:scroll;
-    width:500px;
+    width:1000px;
     padding-top:var(--vertical-space);
     padding-bottom:var(--vertical-space);
      
@@ -15,11 +15,7 @@
     padding-top:10px;
     padding-left:20px;
 }
-editability-box:uneditable{
-    text-decoration: line-through;
-    background-color:black;
-}
-
+ 
 #add-instruction{
     background-color:yellow;
 }

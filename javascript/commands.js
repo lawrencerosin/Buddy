@@ -5,15 +5,18 @@ function CreateInputBox(description, type="text"){
     box.setAttribute("type", type);
     box.setAttribute("placeholder", description);
     box.setAttribute("required", true);
+     
     return box;
 }
-export function CreateLogInForm(){
+export function CreateLogInForm(instruction){
     const form=document.createElement("form");
+   
    form.appendChild(CreateInputBox("E-mail Address", "email"));
    form.innerHTML+="<br>";
    form.appendChild(CreateInputBox("Password", "password"));
     form.innerHTML+="<br>";
    const logIn=document.createElement("button");
+   
    logIn.textContent="Log In";
    form.appendChild(logIn);
    return form;
