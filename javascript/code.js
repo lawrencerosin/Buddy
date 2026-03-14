@@ -41,18 +41,19 @@ function CreateColorBox(type, color){
 document.getElementById("add-instruction").addEventListener("click", function(){
     const instruction=document.createElement("li");
     instruction.style.listStyleType="none";
+    const gui=document.createElement("form");
    const tagCombos=CreateTagComboMenu();
     
    const text=document.createElement("textarea"); 
-    
+    text.disabled=true;
    const deleteButton=CreateDeleteButton();
-   instruction.appendChild(tagCombos);
+   gui.appendChild(tagCombos);
   
-   instruction.appendChild(text);
-  instruction.appendChild(CreateColorBox("Text", "black"));
-   instruction.appendChild(CreateColorBox("Background", "white"));
-   instruction.appendChild(deleteButton);
-    
+   gui.appendChild(text);
+ gui.appendChild(CreateColorBox("Text", "black"));
+  gui.appendChild(CreateColorBox("Background", "white"));
+  gui.appendChild(deleteButton);
+    instruction.appendChild(gui);
    document.getElementById("program").appendChild(instruction);
 }); 
 function AssignColors(instruction, element){
@@ -68,7 +69,7 @@ document.getElementById("run").addEventListener("click",function(){
     for(let instruction of program.children){
         let component;
         
-        switch(instruction.children[0].value){
+        switch(instruction.children[0].children[0].value){
            case commands.TAG_COMBOS[0]:
             
             
@@ -100,7 +101,7 @@ document.getElementById("run").addEventListener("click",function(){
           default:
            component=commands.CreateTitledTableWithHeaders(instruction);
         }
-        AssignColors(instruction, component);
+        AssignColors(instruction.children[0], component);
         output.appendChild(component);
     }
          
