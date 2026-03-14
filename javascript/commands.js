@@ -10,7 +10,10 @@ function CreateInputBox(description, type="text"){
 }
 export function CreateLogInForm(instruction){
     const form=document.createElement("form");
-   
+   const title=document.createElement("h1");
+   title.textContent="Log In";
+
+   form.appendChild(title);
    form.appendChild(CreateInputBox("E-mail Address", "email"));
    form.innerHTML+="<br>";
    form.appendChild(CreateInputBox("Password", "password"));
@@ -23,6 +26,9 @@ export function CreateLogInForm(instruction){
 }
 export function CreateSignUpForm(){
     const form=document.createElement("form");
+    const title=document.createElement("h1");
+    title.textContent="Sign Up";
+    form.appendChild(title);
     form.appendChild(CreateInputBox("First Name"));
     form.innerHTML+="<br>";
     form.appendChild(CreateInputBox("Last Name"));
